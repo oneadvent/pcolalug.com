@@ -11,7 +11,11 @@
 {% if presentations %}
   <ul>
   {% for presentation in presentations %}
-    <li>{{ presentation.name }}</li>
+  <a href="{{ request.route_url('presentations') }}/{{ presentation.file_pk }}"><ul>{{ presentation.name.title() }} - <span id="name">{{ presentation.presenter.display_name }}</span>
+      <p id="title">{{ presentation.date }}</p>
+      <p id="description"> {{ presentation.description }} </p>
+  </ul></a>
+
   {% endfor %}
   </ul>
 {% else %}

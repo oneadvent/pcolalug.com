@@ -3,9 +3,12 @@
 {% endblock %}
 {% block content %}
 {% if presentation %}
-  <h1>{{ presentation.name }}</h1>
+  <h1>{{ presentation.name.title() }}</h1>
   <p>{{ presentation.description }}</p>
   {% if presentation.file %}
+    {% if 'image' in presentation.file.mimetype %}
+      <img src="{{ presentation.file.public_url(request) }}">
+      {% endif %}
   <p><a href="{{ presentation.file.public_url(request) }}">Download {{ presentation.file.filename }}</a></p>
   {% endif %}
 {% else %}
